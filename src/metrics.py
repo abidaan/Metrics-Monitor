@@ -1,5 +1,6 @@
 import psutil
 
+
 def get_metrics():
     """
     Collects various system metrics and returns a list of objects.
