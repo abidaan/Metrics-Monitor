@@ -1,6 +1,6 @@
 import psutil
 
-import src.util
+import src.util as util
 
 metrics_dict = {"cpu": {}, "memory": {}, "disk": {}}
 
@@ -11,8 +11,8 @@ def get_memory_metrics():
     """
     memory_metrics = []
     memory_dict = {}
-    metrics.append(psutil.virtual_memory())
-    metrics.append(psutil.swap_memory())
+    memory_metrics.append(psutil.virtual_memory())
+    memory_metrics.append(psutil.swap_memory())
 
     for metric in memory_metrics:
         memory_dict.update(util.namedtuple_to_dict(metric))
@@ -26,9 +26,9 @@ def get_cpu_metrics():
     """
     cpu_metrics = []
     cpu_dict = {}
-    metrics.append(psutil.cpu_stats())
-    metrics.append(psutil.cpu_freq())
-    metrics.append(psutil.cpu_times())
+    cpu_metrics.append(psutil.cpu_stats())
+    cpu_metrics.append(psutil.cpu_freq())
+    cpu_metrics.append(psutil.cpu_times())
 
     for metric in cpu_metrics:
         cpu_dict.update(util.namedtuple_to_dict(metric))
@@ -42,8 +42,8 @@ def get_disk_metrics():
     """
     disk_metrics = []
     disk_dict = {}
-    metrics.append(psutil.disk_usage('/'))
-    metrics.append(psutil.disk_io_counters())
+    disk_metrics.append(psutil.disk_usage('/'))
+    disk_metrics.append(psutil.disk_io_counters())
 
     for metric in disk_metrics:
         disk_dict.update(util.namedtuple_to_dict(metric))
@@ -58,4 +58,3 @@ def get_metrics():
     get_memory_metrics()
     get_cpu_metrics()
     get_disk_metrics()
-
