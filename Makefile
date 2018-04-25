@@ -9,4 +9,4 @@ lint:
 	pipenv run flake8 --max-line-length=110
 
 test: lint
-	export PYTHONPATH=$(PWD) && pipenv run pytest src/test
+	export PYTHONPATH=$(PWD) && pipenv run pytest test
