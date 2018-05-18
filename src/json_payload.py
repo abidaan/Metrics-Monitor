@@ -20,4 +20,5 @@ def create_msg_payload():
     """
     payload = {}
     payload.update(create_identifier_payload(only_identifier=False))
-    return json.dumps(payload.update(get_metrics))
+    payload.update(get_metrics())
+    return json.dumps(payload)
